@@ -1,6 +1,6 @@
 <template>
-    <v-app-bar app color="primary" dark>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar color="primary">
+        <v-app-bar-nav-icon varient="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>Frostgrave Buddy</v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer
@@ -30,7 +30,7 @@ import { ref } from 'vue'
 
 const drawer = ref(false)
 const navItems = [
-    { title: 'Home', icon: 'mdi-home', to: '/' },
+    { title: 'Home', icon: 'home', to: '/' },
     { title: 'Warband Builder', icon: 'mdi-account-group', to: '/warband' },
     { title: 'Spells', icon: 'mdi-book-open-variant', to: '/spells' },
     { title: 'Items', icon: 'mdi-sword', to: '/items' },

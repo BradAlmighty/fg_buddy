@@ -12,7 +12,7 @@
                         </p>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn color="primary" to="/warbands">
+                        <v-btn color="primary" to="/warband">
                             Get Started
                         </v-btn>
                     </v-card-actions>
