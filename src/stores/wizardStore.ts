@@ -4,6 +4,10 @@ import { WizardType, WizardSchools, WizardSchoolCode } from '../models/WizardSch
 interface WizardStoreState {
     wizardTypes: WizardType[];
 }
+interface WizardSchool {
+    id: WizardSchoolCode;
+    name: string;
+}
 
 export const useWizardStore = defineStore('wizardStore', {
     state: (): WizardStoreState => ({
@@ -93,6 +97,16 @@ export const useWizardStore = defineStore('wizardStore', {
     getters: {
         getWizardById: (state) => (id: string) =>
             state.wizardTypes.find(wizard => wizard.id === id),
+        getWizardSchools: (state) => {
+            let school: WizardSchool[] = [];
+            state.wizardTypes.forEach(wizType => {
+                school.push({
+                    id: wizType.id as WizardSchoolCode,
+                    name: WizardSchools[wizType.id as WizardSchoolCode],
+                });
+            });
+            return school;
+        },
     },
     actions: {
         addWizardType(wizard: WizardType) {

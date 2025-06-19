@@ -826,9 +826,6 @@ export const useSpellStore = defineStore('spell', {
         getSpellById: (state) => (id: string): Spell | undefined => {
             return state.spells.find(spell => spell.id === id);
         },
-        getSpellByName: (state) => (name: string): Spell | undefined => {
-            return state.spells.find(spell => spell.name === name);
-        },
     },
     actions: {
         setSpells(spells: Spell[]) {
@@ -839,9 +836,6 @@ export const useSpellStore = defineStore('spell', {
         },
         removeSpell(spellName: string) {
             this.spells = this.spells.filter(s => s.name !== spellName);
-        },
-        getSpellByName(spellName: string): Spell | undefined {
-            return this.spells.find(s => s.name === spellName);
         },
     },
 });

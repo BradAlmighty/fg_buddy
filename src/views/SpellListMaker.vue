@@ -1,11 +1,10 @@
 <template>
-    <v-container>
-        <v-row>
-            <v-col cols="12" md="6">
+        <v-row align="center" justify="center">
+            <v-col cols="12" md="8" lg="6" sm="12">
                 <v-select
-                    v-model="selectedWizardType"
-                    :items="wizardTypes"
-                    item-text="name"
+                    v-model="selectedWizard"
+                    :items="wizardStore.getWizardSchools"
+                    item-title="name"
                     item-value="id"
                     label="Select Wizard Type"
                     outlined
@@ -13,11 +12,11 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" md="8">
+            <v-col cols="12" lg="6" md="8" sm="12">
                 <v-select
                     v-model="selectedSpells"
                     :items="filteredSpells"
-                    item-text="name"
+                    item-title="name"
                     item-value="id"
                     label="Select Spells"
                     multiple
@@ -26,13 +25,12 @@
                 />
             </v-col>
         </v-row>
-    </v-container>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useWizardStore } from '@/stores/wizardStore' // Adjust path as needed
-import { useSpellStore } from '@/stores/spellStore' // Adjust path as needed
+import { useWizardStore } from '@/stores/wizardStore'
+import { useSpellStore } from '@/stores/spellStore'
 
 const wizardStore = useWizardStore()
 const spellStore = useSpellStore()
@@ -40,13 +38,13 @@ const spellStore = useSpellStore()
 const wizardTypes = computed(() => wizardStore.wizardTypes)
 const spells = computed(() => spellStore.spells)
 
-const selectedWizardType = ref(null)
+const selectedWizard = ref(null)
 const selectedSpells = ref([])
 
 const filteredSpells = computed(() => {
-    if (!selectedWizardType.value) return []
+    if (!selectedWizard.value) return []
     return spells.value.filter(spell =>
-        !spell.wizardTypeId || spell.wizardTypeId === selectedWizardType.value
+        !spell.wizardTypeId || spell.wizardTypeId === selectedWizard.value
     )
 })
 </script>
