@@ -107,6 +107,21 @@ export const useWizardStore = defineStore('wizardStore', {
             });
             return school;
         },
+        getWizardTypeBySchool: (state) => (school: WizardSchoolCode) => {
+            return state.wizardTypes.find(wizard => wizard.id === school) || null
+        },
+        getAlignedSchools: (state) => (school: WizardSchoolCode) => {
+            const wizard = state.wizardTypes.find(w => w.id === school);
+            return wizard ? wizard.aligned: [] ;
+        },
+        getNeutralSchools: (state) => (school: WizardSchoolCode) => {
+            const wizard = state.wizardTypes.find(w => w.id === school);
+            return wizard ? wizard.neutral : [];
+        },
+        getOpposedSchool: (state) => (school: WizardSchoolCode) => {
+            const wizard = state.wizardTypes.find(w => w.id === school);
+            return wizard ? wizard.opposed : null ;
+        },
     },
     actions: {
         addWizardType(wizard: WizardType) {

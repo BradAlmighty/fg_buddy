@@ -1,6 +1,6 @@
 <template>
         <v-row align="center" justify="center">
-            <v-col cols="12" md="8" lg="6" sm="12">
+            <v-col cols="12">
                 <v-select
                     v-model="selectedWizard"
                     :items="wizardStore.getWizardSchools"
@@ -12,7 +12,7 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" lg="6" md="8" sm="12">
+            <v-col cols="12">
                 <v-select
                     v-model="selectedSpells"
                     :items="filteredSpells"
@@ -20,17 +20,23 @@
                     item-value="id"
                     label="Select Spells"
                     multiple
-                    chips
                     outlined
                 />
             </v-col>
         </v-row>
+        <v-row>
+            <v-col v-for="spell in selectedSpells" :key="spell.id" cols="12" md="4">
+                <SpellCard :spell="spell" :school="selectedWizard"/>
+            </v-col>
+        </v-row>
+
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useWizardStore } from '@/stores/wizardStore'
 import { useSpellStore } from '@/stores/spellStore'
+import SpellCard from '@/components/SpellCard.vue'
 
 const wizardStore = useWizardStore()
 const spellStore = useSpellStore()
