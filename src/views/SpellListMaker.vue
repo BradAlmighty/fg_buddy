@@ -1,6 +1,7 @@
 <template>
-        <v-row align="center" justify="center">
-            <v-col cols="12">
+    <v-container class="fill-width" fluid>
+        <v-row no-gutters align="center" justify="center">
+            <v-col cols="12" sm="6" xs="4">
                 <v-select
                     v-model="selectedWizard"
                     :items="wizardStore.getWizardSchools"
@@ -8,11 +9,10 @@
                     item-value="id"
                     label="Select Wizard Type"
                     outlined
+                    class="ma-1"
                 />
             </v-col>
-        </v-row>
-        <v-row>
-            <v-col cols="12">
+            <v-col cols="12" sm="6" xs="8">
                 <v-select
                     v-model="selectedSpells"
                     :items="filteredSpells"
@@ -21,15 +21,16 @@
                     label="Select Spells"
                     multiple
                     outlined
+                    class="ma-1"
                 />
             </v-col>
         </v-row>
+    </v-container>
         <v-row>
             <v-col v-for="spell in selectedSpells" :key="spell.id" cols="12" md="4">
                 <SpellCard :spell="spell" :school="selectedWizard"/>
             </v-col>
         </v-row>
-
 </template>
 
 <script setup>
@@ -54,3 +55,9 @@ const filteredSpells = computed(() => {
     )
 })
 </script>
+
+<style scoped>
+.fill-width {
+    min-width: 80vw;
+}
+</style>
