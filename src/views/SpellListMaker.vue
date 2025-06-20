@@ -1,5 +1,4 @@
 <template>
-    <v-container class="fill-width" fluid>
         <v-row no-gutters align="center" justify="center">
             <v-col cols="12" sm="6" xs="4">
                 <v-select
@@ -8,7 +7,9 @@
                     item-title="name"
                     item-value="id"
                     label="Select Wizard Type"
+                    bg-color="surface-light"
                     outlined
+                    min-width="250"
                     class="ma-1"
                 />
             </v-col>
@@ -21,11 +22,13 @@
                     label="Select Spells"
                     multiple
                     outlined
+                    clearable
+                    bg-color="surface-light"
+                    min-width="250"
                     class="ma-1"
                 />
             </v-col>
         </v-row>
-    </v-container>
         <v-row>
             <v-col v-for="spell in selectedSpells" :key="spell.id" cols="12" md="4">
                 <SpellCard :spell="spell" :school="selectedWizard"/>

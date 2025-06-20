@@ -1,7 +1,7 @@
 <template>
     <v-card class="ma-2" outlined>
         <v-card-title>{{ currentSpell?.name }} <span :class="castCostClass">({{spellCastModifier}})</span></v-card-title>
-        <v-card-subtitle>{{ spellSchool }}</v-card-subtitle>
+        <v-card-subtitle>{{ spellSchool }} - {{ currentSpell?.category }}</v-card-subtitle>
         <v-expansion-panels>
             <v-expansion-panel 
                 title="Spell Details"

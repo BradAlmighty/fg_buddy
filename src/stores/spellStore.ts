@@ -5,6 +5,8 @@ interface SpellStoreState {
     spells: Spell[];
 }
 
+// random spell table data
+
 export const useSpellStore = defineStore('spell', {
     state: (): SpellStoreState => ({
         spells: [
