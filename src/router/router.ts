@@ -1,31 +1,31 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", name: "Home", component: () => import("@/Views/Home.vue") },
+  { path: "/", name: "Home", component: () => import("@/views/Home.vue") },
   {
     path: "/warband",
     name: "Warband",
-    component: () => import("@/Views/WarbandBuilder.vue"),
+    component: () => import("@/views/WarbandBuilder.vue"),
   },
   {
     path: "/spells",
     name: "Spells",
-    component: () => import("@/Views/SpellListMaker.vue"),
+    component: () => import("@/views/SpellListMaker.vue"),
   },
   {
     path: "/items",
     name: "Items",
-    component: () => import("@/Views/ItemReference.vue"),
+    component: () => import("@/views/ItemReference.vue"),
   },
   {
     path: "/rules",
     name: "Rules",
-    component: () => import("@/Views/RulesReference.vue"),
+    component: () => import("@/views/RulesReference.vue"),
   },
   {
     path: "/settings",
     name: "Settings",
-    component: () => import("@/Views/Settings.vue"),
+    component: () => import("@/views/Settings.vue"),
   },
 ];
 
